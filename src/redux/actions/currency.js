@@ -24,5 +24,5 @@ export const get_rates_thunk = () => async (dispatch, getState) => {
   const {initCurr, destCurr} = getState()
   const response = await fetch(`https://api.exchangeratesapi.io/latest?base=${initCurr}`)
   const rates = await response.json()
-  dispatch({type:TYPES.CHANGE_RATE,payload:rates.rates[destCurr]})
+  dispatch({type:TYPES.CHANGE_RATE,payload:[rates.rates[destCurr],Object.keys(rates.rates)]})
 }

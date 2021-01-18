@@ -12,7 +12,11 @@ function PieceOfExchange({ initOrDest, handleValueChange, handleCurrChange }) {
         variant='outlined'
         type='number'
         placeholder='Value here'
-        value={state[`${initOrDest}Value`]}
+        value={
+          state[`${initOrDest}Value`] === ''
+            ? ''
+            : Math.floor(state[`${initOrDest}Value`] * 1000) / 1000
+        }
         onChange={handleValueChange}
       />
       <Select

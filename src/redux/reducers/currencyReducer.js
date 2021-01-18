@@ -25,10 +25,12 @@ function currencyReducer(state = {}, action) {
         destCurr: action.payload,
       };
       case TYPES.CHANGE_RATE:
+        const [newRate, allCurrencies]=action.payload
       return {
         ...state,
-        rate: action.payload,
-        destValue:state.initValue*action.payload
+        rate: newRate,
+        destValue:state.initValue*newRate,
+        allTheCurrencies:allCurrencies
       };
 
     default:
