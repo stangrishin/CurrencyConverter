@@ -4,7 +4,7 @@ const initState = {
   rate: 10,
   initValue: 1,
   destValue: 1,
-  allTheCurrencies: [],
+  allTheCurrencies: ['USD', 'EUR', 'RUB', 'NOK'],
 };
 
 export default initState;
