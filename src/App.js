@@ -51,6 +51,8 @@ function App() {
     >
       <Grid item xs={6}>
         <Container maxWidth='sm'>
+          <h5 style={{'text-align':'center'}}>THE DESIGN IS AWESOME</h5>
+          <h2 style={{'text-align':'center'}}>CURRENCY CONVERTER</h2>
           <PieceOfExchange
             initOrDest={'init'}
             handleValueChange={handleValueChange}
