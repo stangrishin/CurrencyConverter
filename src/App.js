@@ -18,14 +18,15 @@ function App() {
 
   useEffect(() => {
     dispatch(get_rates_thunk());
-  }, [initCurr, destCurr]);
+  }, [initCurr, destCurr]);//при каждом изменении изначальной валюты или конечной, а также после того, как компонент замаунтится, отправим запрос на получение курса и списка валют
 
+  //функция, которая будет менять валюты местами
   const handleSwitchCurrency = () => {
-    dispatch(change_init_curr(destCurr));
+    dispatch(change_init_curr(destCurr));//нам надо изменить исх и конечные валюты местами
     dispatch(change_dest_curr(initCurr));
-    dispatch(get_rates_thunk());
+    dispatch(get_rates_thunk());//и запросить новый курс
   };
-
+  //функция, которая будет следить за изменением количества исх или конечного значения, в зависимости от того, от кого придет event
   const handleValueChange = (event) => {
     if (event.target.name === 'initValueInput') {
       dispatch(change_init_value(event.target.value));
@@ -33,6 +34,8 @@ function App() {
       dispatch(change_dest_value(event.target.value));
     }
   };
+  //функция, которая будет следить за изменением количества исх или конечного значения, в зависимости от того, от кого придет event
+
   const handleCurrChange = (event) => {
     if (event.target.name === 'initCurrInput') {
       dispatch(change_init_curr(event.target.value));

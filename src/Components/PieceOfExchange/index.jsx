@@ -12,6 +12,7 @@ function PieceOfExchange({ initOrDest, handleValueChange, handleCurrChange }) {
         variant='outlined'
         type='number'
         placeholder='Value here'
+        //Значение в поле должно быть ограничено 3мя знаками после запятой, но при этом поле можно очистить полностью
         value={
           state[`${initOrDest}Value`] === ''
             ? ''
@@ -20,12 +21,12 @@ function PieceOfExchange({ initOrDest, handleValueChange, handleCurrChange }) {
         onChange={handleValueChange}
       />
       <Select
-        name={`${initOrDest}CurrInput`}
+        name={`${initOrDest}CurrInput`}//нужно уникальное для поля имя, чтобы мы различали затем, какой диспатч запускать
         variant='outlined'
         value={state[`${initOrDest}Curr`]}
         onChange={handleCurrChange}
       >
-        {state.allTheCurrencies.map((currency) => (
+        {state.allTheCurrencies.map((currency) => (//список доступных валют для выбора
           <MenuItem key={currency} value={currency}>
             {currency}
           </MenuItem>
