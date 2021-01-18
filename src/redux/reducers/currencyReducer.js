@@ -6,11 +6,13 @@ function currencyReducer(state = {}, action) {
       return {
         ...state,
         initValue: action.payload,
+        destValue:action.payload*state.rate
       };
     case TYPES.CHANGE_DEST_VALUE:
       return {
         ...state,
         destValue: action.payload,
+        initValue:action.payload/state.rate
       };
 
     default:
