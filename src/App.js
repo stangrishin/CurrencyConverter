@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     dispatch(get_rates_thunk());
-  }, []);
+  }, [initCurr, destCurr]);
 
   const handleSwitchCurrency = () => {
     dispatch(change_init_curr(destCurr));
