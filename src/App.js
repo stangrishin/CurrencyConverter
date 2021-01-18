@@ -14,10 +14,17 @@ import {
 
 function App() {
   const dispatch = useDispatch();
-  
+  const {initCurr, destCurr} = useSelector((state) => state);
+
   useEffect(() => {
     dispatch(get_rates_thunk());
   }, []);
+
+  const handleSwitchCurrency = () => {
+    dispatch(change_init_curr(destCurr));
+    dispatch(change_dest_curr(initCurr));
+    dispatch(get_rates_thunk());
+  };
 
   const handleValueChange = (event) => {
     if (event.target.name === 'initValueInput') {
@@ -49,7 +56,7 @@ function App() {
             handleValueChange={handleValueChange}
             handleCurrChange={handleCurrChange}
           />
-          <Button />
+          <Button handleSwitchCurrency={handleSwitchCurrency}/>
           <PieceOfExchange
             initOrDest={'dest'}
             handleValueChange={handleValueChange}

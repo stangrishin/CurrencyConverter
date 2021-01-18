@@ -1,7 +1,6 @@
 import React from 'react';
 import { MenuItem, Select, TextField } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-import { change_init_value } from '../../redux/actions/currency';
 
 function PieceOfExchange({ initOrDest, handleValueChange, handleCurrChange }) {
   const state = useSelector((state) => state);
