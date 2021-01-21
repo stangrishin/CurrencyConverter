@@ -4,13 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from './Components/Button';
 import PieceOfExchange from './Components/PieceOfExchange';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  change_init_value,
-  change_dest_value,
-  change_init_curr,
-  change_dest_curr,
-  get_rates_thunk,
-} from './redux/actions/currency';
+import { get_rates_thunk } from './redux/actions/currency';
 
 function App() {
   const dispatch = useDispatch();
