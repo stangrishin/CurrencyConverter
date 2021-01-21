@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from './Components/Button';
 import PieceOfExchange from './Components/PieceOfExchange';
 import { useDispatch } from 'react-redux';
-import { get_rates_thunk } from './redux/actions/currency';
+import { get_rates_thunk, switch_currencies } from './redux/actions/currency';
 import CurrencySelect from './Components/CurrencySelect';
 
 function App() {
@@ -13,6 +13,11 @@ function App() {
     dispatch(get_rates_thunk());
   }, []); //после того, как компонент замаунтится, отправим запрос на получение курса и списка валют
 
+  //функция, которая будет менять валюты местами и запрашивать новый курс
+  const handleSwitchCurrency = () => {
+    dispatch(switch_currencies());
+    dispatch(get_rates_thunk());
+  };
   return (
     <Grid
       container
@@ -30,7 +35,7 @@ function App() {
             <PieceOfExchange initOrDest={'init'} />
             <CurrencySelect initOrDest={'init'} />
           </div>
-          <Button />
+            <Button switchcurrs={handleSwitchCurrency}/>
           <div>
             <PieceOfExchange initOrDest={'dest'} />
             <CurrencySelect initOrDest={'dest'} />

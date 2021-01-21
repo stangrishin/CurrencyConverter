@@ -1,4 +1,8 @@
 import * as TYPES from '../types/currency'
+//поменять валюты местами
+export const switch_currencies = ()=>({
+  type: TYPES.SWITCH_CURRS,
+})
 //изменение количества исходной валюты
 export const change_init_value = (newInitValue)=>({
   type: TYPES.CHANGE_INIT_VALUE,

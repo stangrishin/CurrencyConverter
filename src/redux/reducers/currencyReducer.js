@@ -2,6 +2,13 @@ import * as TYPES from '../types/currency';
 
 function currencyReducer(state = {}, action) {
   switch (action.type) {
+    //поменять валюты местами
+    case TYPES.SWITCH_CURRS:
+      return {
+        ...state,
+        initCurr: state.destCurr,
+        destCurr: state.initCurr, //кол-во конечной валюты сразу должно пересчитываться
+      };
     //изменение количества исх валюты
     case TYPES.CHANGE_INIT_VALUE:
       return {
