@@ -4,7 +4,7 @@ const initState = {
   rate: 10,//не важно какое значение, когда компонент App смонтируется, он все равно сразу поменяется на полученный со стороннего апи
   initValue: 1,
   destValue: 1,
-  allTheCurrencies: [],
+  allTheCurrencies: ['USD', 'EUR', 'NOK', 'RUB'],
 };
 
 export default initState;

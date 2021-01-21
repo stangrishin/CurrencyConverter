@@ -14,35 +14,13 @@ import {
 
 function App() {
   const dispatch = useDispatch();
-  const {initCurr, destCurr} = useSelector((state) => state);
+  const initCurr = useSelector((state) => state.initCurr);
+  const destCurr = useSelector((state) => state.destCurr);
 
   useEffect(() => {
     dispatch(get_rates_thunk());
-  }, [initCurr, destCurr]);//при каждом изменении изначальной валюты или конечной, а также после того, как компонент замаунтится, отправим запрос на получение курса и списка валют
+  }, [initCurr, destCurr]); //при каждом изменении изначальной валюты или конечной, а также после того, как компонент замаунтится, отправим запрос на получение курса и списка валют
 
-  //функция, которая будет менять валюты местами
-  const handleSwitchCurrency = () => {
-    dispatch(change_init_curr(destCurr));//нам надо изменить исх и конечные валюты местами
-    dispatch(change_dest_curr(initCurr));
-    dispatch(get_rates_thunk());//и запросить новый курс
-  };
-  //функция, которая будет следить за изменением количества исх или конечного значения, в зависимости от того, от кого придет event
-  const handleValueChange = (event) => {
-    if (event.target.name === 'initValueInput') {
-      dispatch(change_init_value(event.target.value));
-    } else {
-      dispatch(change_dest_value(event.target.value));
-    }
-  };
-  //функция, которая будет следить за изменением количества исх или конечного значения, в зависимости от того, от кого придет event
-
-  const handleCurrChange = (event) => {
-    if (event.target.name === 'initCurrInput') {
-      dispatch(change_init_curr(event.target.value));
-    } else {
-      dispatch(change_dest_curr(event.target.value));
-    }
-  };
   return (
     <Grid
       container
@@ -54,19 +32,11 @@ function App() {
     >
       <Grid item xs={6}>
         <Container maxWidth='sm'>
-          <h5 style={{'text-align':'center'}}>THE DESIGN IS AWESOME</h5>
-          <h2 style={{'text-align':'center'}}>CURRENCY CONVERTER</h2>
-          <PieceOfExchange
-            initOrDest={'init'}
-            handleValueChange={handleValueChange}
-            handleCurrChange={handleCurrChange}
-          />
-          <Button handleSwitchCurrency={handleSwitchCurrency}/>
-          <PieceOfExchange
-            initOrDest={'dest'}
-            handleValueChange={handleValueChange}
-            handleCurrChange={handleCurrChange}
-          />
+          <h5 style={{ 'text-align': 'center' }}>THE DESIGN IS AWESOME</h5>
+          <h2 style={{ 'text-align': 'center' }}>CURRENCY CONVERTER</h2>
+          <PieceOfExchange initOrDest={'init'} />
+          <Button />
+          <PieceOfExchange initOrDest={'dest'} />
         </Container>
       </Grid>
     </Grid>
