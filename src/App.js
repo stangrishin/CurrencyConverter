@@ -3,18 +3,15 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from './Components/Button';
 import PieceOfExchange from './Components/PieceOfExchange';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { get_rates_thunk } from './redux/actions/currency';
 import CurrencySelect from './Components/CurrencySelect';
 
 function App() {
   const dispatch = useDispatch();
-  const initCurr = useSelector((state) => state.initCurr);
-  const destCurr = useSelector((state) => state.destCurr);
-
   useEffect(() => {
     dispatch(get_rates_thunk());
-  }, [initCurr, destCurr]); //при каждом изменении изначальной валюты или конечной, а также после того, как компонент замаунтится, отправим запрос на получение курса и списка валют
+  }, []); //после того, как компонент замаунтится, отправим запрос на получение курса и списка валют
 
   return (
     <Grid

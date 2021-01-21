@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   change_init_curr,
   change_dest_curr,
+  get_rates_thunk
 } from '../../redux/actions/currency';
 
 function CurrencySelect({ initOrDest }) {
@@ -12,13 +13,14 @@ function CurrencySelect({ initOrDest }) {
   const dependencies = useSelector((state) => state.allTheCurrencies);
 
 
-  //функция, которая будет следить за изменением самой исх или конечной валюты, в зависимости от того, от кого придет event
+  //функция, которая будет следить за изменением самой исх или конечной валюты, в зависимости от того, от кого придет event, а затем необходимо получить новые курсы
   const handleCurrChange = (event) => {
     if (event.target.name === 'initCurrInput') {
       dispatch(change_init_curr(event.target.value));
     } else {
       dispatch(change_dest_curr(event.target.value));
     }
+    dispatch(get_rates_thunk())
   };
 
   return (
