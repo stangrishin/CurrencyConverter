@@ -5,6 +5,7 @@ import Button from './Components/Button';
 import PieceOfExchange from './Components/PieceOfExchange';
 import { useDispatch, useSelector } from 'react-redux';
 import { get_rates_thunk } from './redux/actions/currency';
+import CurrencySelect from './Components/CurrencySelect';
 
 function App() {
   const dispatch = useDispatch();
@@ -26,11 +27,17 @@ function App() {
     >
       <Grid item xs={6}>
         <Container maxWidth='sm'>
-          <h5 style={{ 'text-align': 'center' }}>THE DESIGN IS AWESOME</h5>
-          <h2 style={{ 'text-align': 'center' }}>CURRENCY CONVERTER</h2>
-          <PieceOfExchange initOrDest={'init'} />
+          <h5 style={{ textAlign: 'center' }}>THE DESIGN IS AWESOME</h5>
+          <h2 style={{ textAlign: 'center' }}>CURRENCY CONVERTER</h2>
+          <div>
+            <PieceOfExchange initOrDest={'init'} />
+            <CurrencySelect initOrDest={'init'} />
+          </div>
           <Button />
-          <PieceOfExchange initOrDest={'dest'} />
+          <div>
+            <PieceOfExchange initOrDest={'dest'} />
+            <CurrencySelect initOrDest={'dest'} />
+          </div>
         </Container>
       </Grid>
     </Grid>
